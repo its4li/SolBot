@@ -1,6 +1,7 @@
 import { Connection, Keypair, VersionedTransaction, PublicKey } from '@solana/web3.js';
-import { Wallet } from '@project-serum/anchor';
+import { Wallet } from '@coral-xyz/anchor';
 import bs58 from 'bs58';
+// ... باقی imports
 import fetch from 'cross-fetch';
 import WebSocket from 'ws';
 import cron from 'node-cron';
