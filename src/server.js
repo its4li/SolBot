@@ -2,6 +2,7 @@ import express from 'express';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import SolanaTradeBot from './index.js';
+// ... باقی کد
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
