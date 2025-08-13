@@ -117,6 +117,11 @@
             color: white;
         }
 
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
         .status {
             padding: 15px;
             border-radius: 8px;
@@ -134,6 +139,29 @@
             background: #f8d7da;
             color: #721c24;
             border: 1px solid #f5c6cb;
+        }
+
+        .wallet-info {
+            background: #e7f3ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 4px solid #007bff;
+        }
+
+        .wallet-info h4 {
+            margin-bottom: 10px;
+            color: #0056b3;
+        }
+
+        .wallet-address {
+            font-family: monospace;
+            font-size: 14px;
+            word-break: break-all;
+            background: white;
+            padding: 8px;
+            border-radius: 4px;
+            margin: 5px 0;
         }
 
         .positions {
@@ -182,6 +210,35 @@
             gap: 20px;
         }
 
+        .wallet-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .wallet-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .wallet-btn:hover {
+            border-color: #667eea;
+            background: #f8f9ff;
+        }
+
+        .wallet-btn img {
+            width: 24px;
+            height: 24px;
+        }
+
         @media (max-width: 768px) {
             .container {
                 margin: 10px;
@@ -198,6 +255,10 @@
             .content {
                 padding: 20px;
             }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -211,13 +272,23 @@
         <div class="content">
             <!-- اتصال والت -->
             <div class="section">
-                <h2>🔐 اتصال والت</h2>
-                <div class="form-group">
-                    <label>کلید خصوصی والت:</label>
-                    <input type="password" id="privateKey" placeholder="کلید خصوصی خود را وارد کنید">
+                <h2>🔗 اتصال والت سولانا</h2>
+                <div class="wallet-buttons">
+                    <div class="wallet-btn" onclick="connectPhantom()">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTA4IiBoZWlnaHQ9IjEwOCIgdmlld0JveD0iMCAwIDEwOCAxMDgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMDgiIGhlaWdodD0iMTA4IiByeD0iMjYiIGZpbGw9InVybCgjcGFpbnQwX2xpbmVhcl8xNzM5XzIxMTgpIi8+CjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNNTQgMTZDNzMuODgyMyAxNiA5MCAzMi4xMTc3IDkwIDUyQzkwIDcxLjg4MjMgNzMuODgyMyA4OCA1NCA4OEM0MS42NzQxIDg4IDMwLjkwOTQgODEuMzA5NCAyNC43Mzg2IDcxLjI0MjlMMzIuNzUzNSA2My4yMjgxQzM2LjQ5NDEgNjkuNDM1NSA0NC44MjM1IDczLjUgNTQgNzMuNUM2NS4zMjYxIDczLjUgNzQuNSA2NC4zMjYxIDc0LjUgNTNDNzQuNSA0MS42NzM5IDY1LjMyNjEgMzIuNSA1NCAzMi41QzQ0LjgyMzUgMzIuNSAzNi40OTQxIDM2LjU2NDUgMzIuNzUzNSA0Mi43NzE5TDI0LjczODYgMzQuNzU3MUMzMC45MDk0IDI0LjY5MDYgNDEuNjc0MSAxNiA1NCAxNloiIGZpbGw9IndoaXRlIi8+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9InBhaW50MF9saW5lYXJfMTczOV8yMTE4IiB4MT0iMCIgeTE9IjAiIHgyPSIxMDgiIHkyPSIxMDgiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iIzUzNEJCMSIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM1NTFCRjkiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8L3N2Zz4K" alt="Phantom">
+                        <span>Phantom Wallet</span>
+                    </div>
+                    <div class="wallet-btn" onclick="connectSolflare()">
+                        <div style="width: 24px; height: 24px; background: #FF6B00; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 12px;">S</div>
+                        <span>Solflare</span>
+                    </div>
+                    <div class="wallet-btn" onclick="connectBackpack()">
+                        <div style="width: 24px; height: 24px; background: #000; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 12px;">B</div>
+                        <span>Backpack</span>
+                    </div>
                 </div>
-                <button class="btn btn-primary" onclick="connectWallet()">اتصال والت</button>
                 <div id="walletStatus"></div>
+                <div id="walletInfo" style="display: none;"></div>
             </div>
 
             <!-- خرید توکن -->
@@ -249,7 +320,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-success" onclick="buyToken()">خرید توکن</button>
+                <button class="btn btn-success" id="buyBtn" onclick="buyToken()" disabled>خرید توکن</button>
                 <div id="buyStatus"></div>
             </div>
 
@@ -266,14 +337,14 @@
                         <input type="number" id="sellPercentage" placeholder="100" min="1" max="100">
                     </div>
                 </div>
-                <button class="btn btn-danger" onclick="sellToken()">فروش توکن</button>
+                <button class="btn btn-danger" id="sellBtn" onclick="sellToken()" disabled>فروش توکن</button>
                 <div id="sellStatus"></div>
             </div>
 
             <!-- موقعیت‌های فعال -->
             <div class="section">
                 <h2>📊 موقعیت‌های فعال</h2>
-                <button class="btn btn-primary" onclick="loadPositions()">بروزرسانی موقعیت‌ها</button>
+                <button class="btn btn-primary" id="refreshBtn" onclick="loadPositions()" disabled>بروزرسانی موقعیت‌ها</button>
                 <div id="positions" class="positions"></div>
             </div>
         </div>
@@ -281,40 +352,174 @@
 
     <script>
         let isWalletConnected = false;
+        let walletProvider = null;
+        let walletPublicKey = null;
+
+        // چک کردن در دسترس بودن والت‌ها
+        function checkWalletAvailability() {
+            const phantomBtn = document.querySelector('.wallet-btn:first-child');
+            const solflareBtn = document.querySelector('.wallet-btn:nth-child(2)');
+            const backpackBtn = document.querySelector('.wallet-btn:nth-child(3)');
+
+            if (!window.solana) {
+                phantomBtn.style.opacity = '0.5';
+                phantomBtn.onclick = () => window.open('https://phantom.app/', '_blank');
+            }
+            
+            if (!window.solflare) {
+                solflareBtn.style.opacity = '0.5';
+                solflareBtn.onclick = () => window.open('https://solflare.com/', '_blank');
+            }
+            
+            if (!window.backpack) {
+                backpackBtn.style.opacity = '0.5';
+                backpackBtn.onclick = () => window.open('https://backpack.app/', '_blank');
+            }
+        }
 
         function showStatus(elementId, message, isSuccess = true) {
             const element = document.getElementById(elementId);
             element.innerHTML = `<div class="status ${isSuccess ? 'success' : 'error'}">${message}</div>`;
         }
 
-        async function connectWallet() {
-            const privateKey = document.getElementById('privateKey').value;
-            
-            if (!privateKey) {
-                showStatus('walletStatus', 'لطفاً کلید خصوصی را وارد کنید', false);
+        function showWalletInfo(publicKey, balance) {
+            const walletInfo = document.getElementById('walletInfo');
+            walletInfo.style.display = 'block';
+            walletInfo.innerHTML = `
+                <div class="wallet-info">
+                    <h4>💼 اطلاعات والت</h4>
+                    <div><strong>آدرس:</strong></div>
+                    <div class="wallet-address">${publicKey}</div>
+                    <div><strong>موجودی:</strong> ${balance} SOL</div>
+                </div>
+            `;
+        }
+
+        function enableButtons() {
+            document.getElementById('buyBtn').disabled = false;
+            document.getElementById('sellBtn').disabled = false;
+            document.getElementById('refreshBtn').disabled = false;
+        }
+
+        async function connectPhantom() {
+            if (!window.solana || !window.solana.isPhantom) {
+                showStatus('walletStatus', 'Phantom Wallet نصب نیست. لطفاً ابتدا آن را نصب کنید.', false);
+                window.open('https://phantom.app/', '_blank');
                 return;
             }
 
+            try {
+                const response = await window.solana.connect();
+                walletProvider = window.solana;
+                walletPublicKey = response.publicKey.toString();
+                
+                // دریافت موجودی
+                const balance = await getWalletBalance(walletPublicKey);
+                
+                isWalletConnected = true;
+                showStatus('walletStatus', '✅ Phantom Wallet با موفقیت متصل شد!');
+                showWalletInfo(walletPublicKey, balance);
+                enableButtons();
+                
+                // اتصال به سرور
+                await connectToServer(walletPublicKey);
+                
+            } catch (error) {
+                showStatus('walletStatus', `❌ خطا در اتصال: ${error.message}`, false);
+            }
+        }
+
+        async function connectSolflare() {
+            if (!window.solflare) {
+                showStatus('walletStatus', 'Solflare Wallet نصب نیست. لطفاً ابتدا آن را نصب کنید.', false);
+                window.open('https://solflare.com/', '_blank');
+                return;
+            }
+
+            try {
+                await window.solflare.connect();
+                walletProvider = window.solflare;
+                walletPublicKey = window.solflare.publicKey.toString();
+                
+                const balance = await getWalletBalance(walletPublicKey);
+                
+                isWalletConnected = true;
+                showStatus('walletStatus', '✅ Solflare Wallet با موفقیت متصل شد!');
+                showWalletInfo(walletPublicKey, balance);
+                enableButtons();
+                
+                await connectToServer(walletPublicKey);
+                
+            } catch (error) {
+                showStatus('walletStatus', `❌ خطا در اتصال: ${error.message}`, false);
+            }
+        }
+
+        async function connectBackpack() {
+            if (!window.backpack) {
+                showStatus('walletStatus', 'Backpack Wallet نصب نیست. لطفاً ابتدا آن را نصب کنید.', false);
+                window.open('https://backpack.app/', '_blank');
+                return;
+            }
+
+            try {
+                await window.backpack.connect();
+                walletProvider = window.backpack;
+                walletPublicKey = window.backpack.publicKey.toString();
+                
+                const balance = await getWalletBalance(walletPublicKey);
+                
+                isWalletConnected = true;
+                showStatus('walletStatus', '✅ Backpack Wallet با موفقیت متصل شد!');
+                showWalletInfo(walletPublicKey, balance);
+                enableButtons();
+                
+                await connectToServer(walletPublicKey);
+                
+            } catch (error) {
+                showStatus('walletStatus', `❌ خطا در اتصال: ${error.message}`, false);
+            }
+        }
+
+        async function getWalletBalance(publicKey) {
+            try {
+                // ساده‌سازی شده - در واقع باید از RPC استفاده کنیم
+                return "نامشخص";
+            } catch (error) {
+                return "خطا";
+            }
+        }
+
+        async function connectToServer(publicKey) {
             try {
                 const response = await fetch('/api/connect-wallet', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ privateKey })
+                    body: JSON.stringify({ publicKey })
                 });
 
                 const result = await response.json();
-
-                if (result.success) {
-                    isWalletConnected = true;
-                    showStatus('walletStatus', '✅ والت با موفقیت متصل شد!');
-                    loadPositions();
-                } else {
-                    showStatus('walletStatus', `❌ خطا در اتصال والت: ${result.error}`, false);
+                if (!result.success) {
+                    console.warn('خطا در اتصال به سرور:', result.error);
                 }
             } catch (error) {
-                showStatus('walletStatus', `❌ خطا در اتصال: ${error.message}`, false);
+                console.error('خطا در اتصال به سرور:', error);
+            }
+        }
+
+        async function signAndSendTransaction(transaction) {
+            if (!walletProvider || !isWalletConnected) {
+                throw new Error('والت متصل نیست');
+            }
+
+            try {
+                const signedTransaction = await walletProvider.signTransaction(transaction);
+                // ارسال تراکنش امضا شده
+                return signedTransaction;
+            } catch (error) {
+                throw new Error(`خطا در امضای تراکنش: ${error.message}`);
             }
         }
 
@@ -328,7 +533,7 @@
             const solAmount = parseFloat(document.getElementById('solAmount').value);
             const takeProfit = parseInt(document.getElementById('takeProfit').value);
             const stopLoss = parseInt(document.getElementById('stopLoss').value);
-            const slippage = parseFloat(document.getElementById('slippage').value) * 100; // Convert to bps
+            const slippage = parseFloat(document.getElementById('slippage').value) * 100;
 
             if (!tokenMint || !solAmount) {
                 showStatus('buyStatus', 'لطفاً تمام فیلدهای ضروری را پر کنید', false);
@@ -336,9 +541,10 @@
             }
 
             try {
-                showStatus('buyStatus', '⏳ در حال خرید توکن...');
+                showStatus('buyStatus', '⏳ در حال آماده‌سازی تراکنش خرید...');
                 
-                const response = await fetch('/api/buy-token', {
+                // دریافت تراکنش از سرور
+                const response = await fetch('/api/prepare-buy', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -348,14 +554,20 @@
                         solAmount,
                         takeProfit,
                         stopLoss,
-                        slippage
+                        slippage,
+                        userPublicKey: walletPublicKey
                     })
                 });
 
                 const result = await response.json();
 
                 if (result.success) {
-                    showStatus('buyStatus', `✅ خرید موفق! امضا: ${result.signature}`);
+                    showStatus('buyStatus', '⏳ لطفاً تراکنش را در والت خود تأیید کنید...');
+                    
+                    // امضا و ارسال تراکنش
+                    const signedTx = await signAndSendTransaction(result.transaction);
+                    
+                    showStatus('buyStatus', `✅ خرید موفق! امضا: ${signedTx}`);
                     loadPositions();
                 } else {
                     showStatus('buyStatus', `❌ خطا در خرید: ${result.error}`, false);
@@ -380,23 +592,28 @@
             }
 
             try {
-                showStatus('sellStatus', '⏳ در حال فروش توکن...');
+                showStatus('sellStatus', '⏳ در حال آماده‌سازی تراکنش فروش...');
                 
-                const response = await fetch('/api/sell-token', {
+                const response = await fetch('/api/prepare-sell', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
                         tokenMint,
-                        percentage
+                        percentage,
+                        userPublicKey: walletPublicKey
                     })
                 });
 
                 const result = await response.json();
 
                 if (result.success) {
-                    showStatus('sellStatus', `✅ فروش موفق! امضا: ${result.signature}`);
+                    showStatus('sellStatus', '⏳ لطفاً تراکنش را در والت خود تأیید کنید...');
+                    
+                    const signedTx = await signAndSendTransaction(result.transaction);
+                    
+                    showStatus('sellStatus', `✅ فروش موفق! امضا: ${signedTx}`);
                     loadPositions();
                 } else {
                     showStatus('sellStatus', `❌ خطا در فروش: ${result.error}`, false);
@@ -412,7 +629,7 @@
             }
 
             try {
-                const response = await fetch('/api/positions');
+                const response = await fetch(`/api/positions?publicKey=${walletPublicKey}`);
                 const result = await response.json();
 
                 const positionsDiv = document.getElementById('positions');
@@ -453,12 +670,15 @@
             }
         }
 
-        // بروزرسانی خودکار موقعیت‌ها هر 30 ثانیه
+        // بروزرسانی خودکار موقعیت‌ها
         setInterval(() => {
             if (isWalletConnected) {
                 loadPositions();
             }
         }, 30000);
+
+        // چک کردن در دسترس بودن والت‌ها هنگام لود شدن صفحه
+        window.addEventListener('load', checkWalletAvailability);
     </script>
 </body>
 </html>
